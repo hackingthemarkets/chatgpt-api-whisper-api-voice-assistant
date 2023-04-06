@@ -7,7 +7,10 @@ messages = [{"role": "system", "content": 'You are a therapist. Respond to all i
 def transcribe(audio):
     global messages
 
-    audio_file = open(audio, "rb")
+    audio_filename_with_extension = audio + '.wav'
+    os.rename(audio, audio_filename_with_extension)
+    
+    audio_file = open(audio_filename_with_extension, "rb")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
 
     messages.append({"role": "user", "content": transcript["text"]})
