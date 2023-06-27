@@ -1,5 +1,6 @@
 import gradio as gr
 import openai, config, subprocess
+import os
 openai.api_key = config.OPENAI_API_KEY
 
 messages = [{"role": "system", "content": 'You are a therapist. Respond to all input in 25 words or less.'}]
